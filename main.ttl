@@ -7,17 +7,17 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://projekt-provider.de/ontology/> .
 
-<https://projekt-provider.de/ontology/> rdf:type owl:Ontology ;
-                                         owl:versionIRI <https://projekt-provider.de/ontology//v0.1.0> ;
-                                         owl:imports <http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl> ,
-                                                     <http://www.opengis.net/ont/geosparql#1.1> .
+<https://projekt-provider.de/ontology> rdf:type owl:Ontology ;
+                                        owl:versionIRI :v0.1.0 ;
+                                        owl:imports <http://purl.obolibrary.org/obo/bfo/2019-08-26/bfo.owl> ,
+                                                    <http://www.opengis.net/ont/geosparql#1.1> .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  https://projekt-provider.de/ontology//developerNote
-<https://projekt-provider.de/ontology//developerNote> rdf:type owl:AnnotationProperty ;
+###  https://projekt-provider.de/ontology/developerNote
+<https://projekt-provider.de/ontology/developerNote> rdf:type owl:AnnotationProperty ;
                                                       rdfs:label "Developer note"@en .
 
 
@@ -35,23 +35,23 @@
                   rdfs:seeAlso <https://www.wikidata.org/wiki/Q27096213> .
 
 
-###  https://projekt-provider.de/ontology//Business
-<https://projekt-provider.de/ontology//Business> rdf:type owl:Class ;
-                                                 rdfs:subClassOf <https://projekt-provider.de/ontology//JuridicalPerson> ;
+###  https://projekt-provider.de/ontology/Business
+<https://projekt-provider.de/ontology/Business> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <https://projekt-provider.de/ontology/JuridicalPerson> ;
                                                  rdfs:label "Busines"@en ,
                                                             "Gewerbebetrieb"@de ;
                                                  rdfs:seeAlso <https://www.wikidata.org/wiki/Q4830453> .
 
 
-###  https://projekt-provider.de/ontology//Consumer
-<https://projekt-provider.de/ontology//Consumer> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/Consumer
+<https://projekt-provider.de/ontology/Consumer> rdf:type owl:Class ;
                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
                                                  rdfs:label "Consumer"@en ,
                                                             "Konsument"@de .
 
 
-###  https://projekt-provider.de/ontology//Facility
-<https://projekt-provider.de/ontology//Facility> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/Facility
+<https://projekt-provider.de/ontology/Facility> rdf:type owl:Class ;
                                                  rdfs:subClassOf :GeographicEntity ;
                                                  rdfs:comment "Geographic entity that was created to support a specific function"@en ,
                                                               "Geographische Entität, die für einen bestimmten Zweck angelegt wurde"@de ;
@@ -60,24 +60,24 @@
                                                  rdfs:seeAlso <https://www.wikidata.org/wiki/Q13226383> .
 
 
-###  https://projekt-provider.de/ontology//JuridicalPerson
-<https://projekt-provider.de/ontology//JuridicalPerson> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/JuridicalPerson
+<https://projekt-provider.de/ontology/JuridicalPerson> rdf:type owl:Class ;
                                                         rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000031> ;
                                                         rdfs:label "Juridical person"@en ,
                                                                    "Juristische Person"@de ;
                                                         rdfs:seeAlso <https://www.wikidata.org/wiki/Q15507> .
 
 
-###  https://projekt-provider.de/ontology//Organisation
-<https://projekt-provider.de/ontology//Organisation> rdf:type owl:Class ;
-                                                     rdfs:subClassOf <https://projekt-provider.de/ontology//JuridicalPerson> ;
+###  https://projekt-provider.de/ontology/Organisation
+<https://projekt-provider.de/ontology/Organisation> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <https://projekt-provider.de/ontology/JuridicalPerson> ;
                                                      rdfs:label "Organisation"@de ,
                                                                 "Organisation"@en ;
-                                                     <https://projekt-provider.de/ontology//developerNote> "Mabe use prov:Organization instead"@en .
+                                                     <https://projekt-provider.de/ontology/developerNote> "Mabe use prov:Organization instead"@en .
 
 
-###  https://projekt-provider.de/ontology//Place
-<https://projekt-provider.de/ontology//Place> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/Place
+<https://projekt-provider.de/ontology/Place> rdf:type owl:Class ;
                                               rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000006> ,
                                                               geo:Feature ,
                                                               [ rdf:type owl:Restriction ;
@@ -88,32 +88,32 @@
                                                          "Place"@en .
 
 
-###  https://projekt-provider.de/ontology//Producer
-<https://projekt-provider.de/ontology//Producer> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/Producer
+<https://projekt-provider.de/ontology/Producer> rdf:type owl:Class ;
                                                  rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
                                                  rdfs:label "Producer"@en ,
                                                             "Produzent"@de .
 
 
-###  https://projekt-provider.de/ontology//Product
-<https://projekt-provider.de/ontology//Product> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/Product
+<https://projekt-provider.de/ontology/Product> rdf:type owl:Class ;
                                                 rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000004> ;
                                                 rdfs:label "Product"@en ,
                                                            "Produkt"@de .
 
 
-###  https://projekt-provider.de/ontology//TransportationRoute
-<https://projekt-provider.de/ontology//TransportationRoute> rdf:type owl:Class ;
+###  https://projekt-provider.de/ontology/TransportationRoute
+<https://projekt-provider.de/ontology/TransportationRoute> rdf:type owl:Class ;
                                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
                                                             rdfs:label "Transportation route"@en ,
                                                                        "Transportweg"@de ;
                                                             rdfs:seeAlso <https://www.wikidata.org/wiki/Q1297806> ;
-                                                            <https://projekt-provider.de/ontology//developerNote> "TODO: Add hasPart some :TransportationRouteSegment"@en .
+                                                            <https://projekt-provider.de/ontology/developerNote> "TODO: Add hasPart some :TransportationRouteSegment"@en .
 
 
-###  https://projekt-provider.de/ontology//TransportationRouteSegment
-<https://projekt-provider.de/ontology//TransportationRouteSegment> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://projekt-provider.de/ontology//TransportationRoute> ;
+###  https://projekt-provider.de/ontology/TransportationRouteSegment
+<https://projekt-provider.de/ontology/TransportationRouteSegment> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://projekt-provider.de/ontology/TransportationRoute> ;
                                                                    rdfs:label "Abschnitt eines Transportwegs"@de ,
                                                                               "Transportation route segment"@en .
 
