@@ -72,37 +72,42 @@ yieldIndex, exportVolume, portThroughput, freightRate, leadTime, inventoryDaysCo
 Detailliert
 ```mermaid
 flowchart LR
-  %% Upstream: Produktion & Sammlung
-  A["Sojafarmer\n(Brasilien/Argentinien/Paraguay)"] --> B[Ernte]
-  B --> C["Sammelstellen / Silos\n(Genossenschaften, Händler)"]
-  C --> D["Vortransport Inland\nLKW/Bahn/Binnenschiff"]
 
-  %% Export: Hafen & Verschiffung
-  D --> E["Exporthafen / Terminal\n(Verladung, Lager, Dokumente)"]
-  E --> F["Seefracht\nBulk Carrier / Container\nAtlantikroute"]
+%% Upstream: Produktion & Sammlung
+A["Sojafarmer<br>(Brasilien / Argentinien / Paraguay)"] --> B["Ernte"]
+B --> C["Sammelstellen / Silos<br>(Genossenschaften, Händler)"]
+C --> D["Vortransport Inland<br>LKW / Bahn / Binnenschiff"]
 
-  %% Import: EU-Häfen & Distribution
-  F --> G["EU-Häfen\n(z.B. Rotterdam, Hamburg)"]
-  G --> H["Importabwicklung\nZoll, Qualität, ggf. Zertifikate"]
-  H --> I["Distribution Inland\nBahn/LKW/Binnenschiff"]
+%% Export: Hafen & Verschiffung
+D --> E["Exporthafen / Terminal<br>(Verladung, Lager, Dokumente)"]
+E --> F["Seefracht<br>Bulk Carrier / Container<br>Atlantikroute"]
 
-  %% Verarbeitung: Crushing & Raffination
-  I --> J["Crushing / Ölmühle\n(Sojabohnen → Meal + Öl)"]
-  J --> K["Sojamehl\n(Futtermittelrohstoff)"]
-  J --> L["Sojaöl\n(Lebensmittel/Industrie/Biodiesel)"]
+%% Import: EU-Häfen & Distribution
+F --> G["EU Häfen<br>(z.B. Rotterdam, Hamburg)"]
+G --> H["Importabwicklung<br>Zoll, Qualität, Zertifikate"]
+H --> I["Distribution Inland<br>Bahn / LKW / Binnenschiff"]
 
-  %% Downstream: Nutzung & Endprodukte
-  K --> M["Futtermittelwerke\n(Rezeptur, Mischfutter)"]
-  M --> N["Tierhaltung\n(Geflügel/Schwein/Rind)"]
-  N --> O["Schlachtung & Verarbeitung"]
-  O --> P["LEH/Gastro/Export"]
-  P --> Q["Verbraucher\n(Fleisch/Milch/Eier)"]
+%% Verarbeitung
+I --> J["Crushing / Ölmühle<br>Sojabohnen -> Meal + Öl"]
+J --> K["Sojamehl<br>(Futtermittelrohstoff)"]
+J --> L["Sojaöl<br>(Lebensmittel / Industrie / Biodiesel)"]
 
-  L --> R["Raffination / Abfüllung"]
-  R --> S["Lebensmittelindustrie\n(z.B. Margarine, Snacks)"]
-  R --> T["Biodiesel / Oleochemie"]
-  S --> U["LEH/Gastro"] --> V["Verbraucher\n(Speiseöle/Produkte)"]
-  T --> W["Transport/Energie-Markt"]
+%% Downstream: Tierprodukte
+K --> M["Futtermittelwerke<br>Rezeptur / Mischfutter"]
+M --> N["Tierhaltung<br>Geflügel / Schwein / Rind"]
+N --> O["Schlachtung & Verarbeitung"]
+O --> P["LEH / Gastro / Export"]
+P --> Q["Verbraucher<br>Fleisch / Milch / Eier"]
+
+%% Downstream: Pflanzenöl
+L --> R["Raffination / Abfüllung"]
+R --> S["Lebensmittelindustrie<br>(z.B. Margarine, Snacks)"]
+R --> T["Biodiesel / Oleochemie"]
+
+S --> U["LEH / Gastro"]
+U --> V["Verbraucher<br>Speiseöle / Produkte"]
+
+T --> W["Transport / Energie Markt"]
 ```
 
 Kompakt
@@ -181,4 +186,85 @@ J["Öl<br>Food / Industrie / Biodiesel<br>Risiken: Substitution, Politikquoten<b
 G --> H --> I
 G --> J
 end
+```
+
+Inkl. monitoring signals
+```mermaid
+flowchart LR
+
+%% ---------------- DATA SOURCES ----------------
+subgraph DS["1. Data Sources"]
+DS1["Satellite & Weather<br>NDVI / Climate"]
+DS2["Storage & Market Data<br>Inventories / Quality"]
+DS3["Transport Data<br>River Levels / Traffic"]
+DS4["Port Data<br>Throughput / Queues"]
+DS5["Shipping Data<br>AIS / Freight Rates"]
+DS6["Customs & Inspection Data"]
+DS7["Energy Markets"]
+DS8["Feed & Commodity Prices"]
+DS9["Livestock Statistics"]
+DS10["Vegetable Oil Markets"]
+end
+
+
+%% ---------------- SIGNALS ----------------
+subgraph SI["2. Monitoring Signals"]
+SI1["Harvest Forecast"]
+SI2["Stock Levels"]
+SI3["Logistics Disruptions"]
+SI4["Port Congestion"]
+SI5["Freight Market"]
+SI6["Import Delays"]
+SI7["Crushing Margin & Capacity"]
+SI8["Feed Price Pressure"]
+SI9["Livestock Supply"]
+SI10["Vegetable Oil Demand"]
+end
+
+
+%% ---------------- SUPPLY CHAIN ----------------
+subgraph SC["3. Physical Supply Chain"]
+SC1["Farming<br>South America"]
+SC2["Silos / Traders"]
+SC3["Inland Logistics"]
+SC4["Export Port"]
+SC5["Ocean Transport"]
+SC6["EU Import"]
+SC7["Crushing"]
+SC8["Feed"]
+SC9["Animal Products"]
+SC10["Soy Oil"]
+end
+
+
+%% ---------------- SUPPLY CHAIN FLOW ----------------
+SC1 --> SC2 --> SC3 --> SC4 --> SC5 --> SC6 --> SC7
+SC7 --> SC8 --> SC9
+SC7 --> SC10
+
+
+%% ---------------- SOURCE → SIGNAL ----------------
+DS1 --> SI1
+DS2 --> SI2
+DS3 --> SI3
+DS4 --> SI4
+DS5 --> SI5
+DS6 --> SI6
+DS7 --> SI7
+DS8 --> SI8
+DS9 --> SI9
+DS10 --> SI10
+
+
+%% ---------------- SIGNAL → SUPPLY CHAIN ----------------
+SI1 -.-> SC1
+SI2 -.-> SC2
+SI3 -.-> SC3
+SI4 -.-> SC4
+SI5 -.-> SC5
+SI6 -.-> SC6
+SI7 -.-> SC7
+SI8 -.-> SC8
+SI9 -.-> SC9
+SI10 -.-> SC10
 ```
