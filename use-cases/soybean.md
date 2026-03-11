@@ -108,28 +108,77 @@ flowchart LR
 Kompakt
 ```
 flowchart LR
-  A[Anbau & Ernte\nSüdamerika] --> B[Sammeln/Lagern\nSilos/Trader]
-  B --> C[Inlandlogistik\nLKW/Bahn/Binnenschiff]
-  C --> D[Exporthafen\nTerminal/Verladung]
-  D --> E[Seetransport\nAtlantik]
-  E --> F[EU-Hafen\nImport/Zoll]
-  F --> G[Verarbeitung\nCrushing: Bohne→Meal+Öl]
-  G --> H[Futtermittel\nMeal] --> I[Tierprodukte\nFleisch/Milch/Eier]
-  G --> J[Öl\nFood/Industrie/Biodiesel]
+
+  subgraph UP["Upstream (Südamerika)"]
+    A["Anbau & Ernte"]
+    B["Silos / Trader"]
+    C["Inlandlogistik<br>LKW • Bahn • Binnenschiff"]
+    A --> B --> C
+  end
+
+  subgraph EXP["Export"]
+    D["Exporthafen<br>Terminal / Verladung"]
+    E["Seetransport<br>Atlantik"]
+    C --> D --> E
+  end
+
+  subgraph IMP["Import (EU)"]
+    F["EU-Hafen<br>Import / Zoll"]
+    G["Crushing<br>Bohne → Meal + Öl"]
+    E --> F --> G
+  end
+
+  subgraph USE["Nutzung"]
+    H["Futtermittel<br>Sojamehl"]
+    I["Tierprodukte<br>Fleisch • Milch • Eier"]
+    J["Sojaöl<br>Food / Industrie / Biodiesel"]
+
+    G --> H --> I
+    G --> J
+  end
 ```
 
 Mit Risiko
 ```mermaid
 flowchart LR
-  A[Anbau & Ernte\nSüdamerika\nRisiken: Wetter/Schädlinge/Ertrag\nSignal: Ernteprognose, NDVI] --> 
-  B[Sammeln & Lager\nSilos/Trader\nRisiken: Lagerkapazität/Qualität\nSignal: Bestände, Qualitätsdaten] --> 
-  C[Inlandlogistik\nLKW/Bahn/Binnenschiff\nRisiken: Streik, Niedrigwasser, Dieselpreis\nSignal: Wasserstände, Stau/Strike-Feeds] --> 
-  D[Exporthafen/Terminal\nVerladung/Dokumente\nRisiken: Slot-Knappheit, Hafenstörung, Compliance\nSignal: Port throughput, Wartezeiten] --> 
-  E[Seetransport\nAtlantik\nRisiken: Frachtrate, Versicherung, Umrouten\nSignal: Baltic-Indices, AIS, Prämien] --> 
-  F[EU-Hafen & Import\nZoll/Qualität/Zertifikate\nRisiken: Verzögerung, Ablehnung, Engpass\nSignal: Liegezeiten, Prüfquoten] --> 
-  G[Verarbeitung (Crushing)\nBohne→Meal+Öl\nRisiken: Kapazität, Energiepreis, Ausfälle\nSignal: Auslastung, Energiepreise] --> 
-  H[Futtermittel\nMeal\nRisiken: Substitutionsgrenze, Preis\nSignal: Rezeptur-Änderungen, Spotpreise] --> 
-  I[Tierhaltung & Produkte\nFleisch/Milch/Eier\nRisiken: Bestandsabbau, Preisschock\nSignal: Schlachtzahlen, Verbraucherpreise]
 
-  G --> J[Öl: Food/Industrie/Biodiesel\nRisiken: Substitution, Politikquoten\nSignal: Pflanzenölpreise, Beimischungsregeln]
+subgraph SA["1. Produktion (Südamerika)"]
+A["Anbau & Ernte<br>Südamerika<br>Risiken: Wetter / Schädlinge / Ertrag<br>Signal: Ernteprognose, NDVI"]
+B["Sammeln & Lager<br>Silos / Trader<br>Risiken: Lagerkapazität / Qualität<br>Signal: Bestände, Qualitätsdaten"]
+A --> B
+end
+
+subgraph LOG["2. Inlandlogistik"]
+C["Inlandlogistik<br>LKW / Bahn / Binnenschiff<br>Risiken: Streik, Niedrigwasser, Dieselpreis<br>Signal: Wasserstände, Traffic-Feeds"]
+B --> C
+end
+
+subgraph EXP["3. Export"]
+D["Exporthafen / Terminal<br>Verladung / Dokumente<br>Risiken: Slot-Knappheit, Hafenstörung, Compliance<br>Signal: Port Throughput, Wartezeiten"]
+C --> D
+end
+
+subgraph SEA["4. Seetransport"]
+E["Seetransport<br>Atlantik<br>Risiken: Frachtrate, Versicherung, Umrouten<br>Signal: Baltic Indices, AIS, Prämien"]
+D --> E
+end
+
+subgraph EU["5. EU Import"]
+F["EU Hafen & Import<br>Zoll / Qualität / Zertifikate<br>Risiken: Verzögerung, Ablehnung, Engpass<br>Signal: Liegezeiten, Prüfquoten"]
+E --> F
+end
+
+subgraph PROC["6. Verarbeitung"]
+G["Crushing<br>Bohne → Meal + Öl<br>Risiken: Kapazität, Energiepreis, Ausfälle<br>Signal: Auslastung, Energiepreise"]
+F --> G
+end
+
+subgraph USE["7. Nutzung"]
+H["Futtermittel (Meal)<br>Risiken: Substitutionsgrenze, Preis<br>Signal: Rezepturänderungen, Spotpreise"]
+I["Tierprodukte<br>Fleisch / Milch / Eier<br>Risiken: Bestandsabbau, Preisschock<br>Signal: Schlachtzahlen, Verbraucherpreise"]
+J["Öl<br>Food / Industrie / Biodiesel<br>Risiken: Substitution, Politikquoten<br>Signal: Pflanzenölpreise, Beimischungsregeln"]
+
+G --> H --> I
+G --> J
+end
 ```
