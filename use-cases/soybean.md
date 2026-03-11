@@ -73,36 +73,36 @@ Detailliert
 ```mermaid
 flowchart LR
   %% Upstream: Produktion & Sammlung
-  A[Sojafarmer\n(Brasilien/Argentinien/Paraguay)] --> B[Ernte]
-  B --> C[Sammelstellen / Silos\n(Genossenschaften, Händler)]
-  C --> D[Vortransport Inland\nLKW/Bahn/Binnenschiff]
+  A["Sojafarmer\n(Brasilien/Argentinien/Paraguay)"] --> B[Ernte]
+  B --> C["Sammelstellen / Silos\n(Genossenschaften, Händler)"]
+  C --> D["Vortransport Inland\nLKW/Bahn/Binnenschiff"]
 
   %% Export: Hafen & Verschiffung
-  D --> E[Exporthafen / Terminal\n(Verladung, Lager, Dokumente)]
-  E --> F[Seefracht\nBulk Carrier / Container\nAtlantikroute]
+  D --> E["Exporthafen / Terminal\n(Verladung, Lager, Dokumente)"]
+  E --> F["Seefracht\nBulk Carrier / Container\nAtlantikroute"]
 
   %% Import: EU-Häfen & Distribution
-  F --> G[EU-Häfen\n(z.B. Rotterdam, Hamburg)]
-  G --> H[Importabwicklung\nZoll, Qualität, ggf. Zertifikate]
-  H --> I[Distribution Inland\nBahn/LKW/Binnenschiff]
+  F --> G["EU-Häfen\n(z.B. Rotterdam, Hamburg)"]
+  G --> H["Importabwicklung\nZoll, Qualität, ggf. Zertifikate"]
+  H --> I["Distribution Inland\nBahn/LKW/Binnenschiff"]
 
   %% Verarbeitung: Crushing & Raffination
-  I --> J[Crushing / Ölmühle\n(Sojabohnen → Meal + Öl)]
-  J --> K[Sojamehl\n(Futtermittelrohstoff)]
-  J --> L[Sojaöl\n(Lebensmittel/Industrie/Biodiesel)]
+  I --> J["Crushing / Ölmühle\n(Sojabohnen → Meal + Öl)"]
+  J --> K["Sojamehl\n(Futtermittelrohstoff)"]
+  J --> L["Sojaöl\n(Lebensmittel/Industrie/Biodiesel)"]
 
   %% Downstream: Nutzung & Endprodukte
-  K --> M[Futtermittelwerke\n(Rezeptur, Mischfutter)]
-  M --> N[Tierhaltung\n(Geflügel/Schwein/Rind)]
-  N --> O[Schlachtung & Verarbeitung]
-  O --> P[LEH/Gastro/Export]
-  P --> Q[Verbraucher\n(Fleisch/Milch/Eier)]
+  K --> M["Futtermittelwerke\n(Rezeptur, Mischfutter)"]
+  M --> N["Tierhaltung\n(Geflügel/Schwein/Rind)"]
+  N --> O["Schlachtung & Verarbeitung"]
+  O --> P["LEH/Gastro/Export"]
+  P --> Q["Verbraucher\n(Fleisch/Milch/Eier)"]
 
-  L --> R[Raffination / Abfüllung]
-  R --> S[Lebensmittelindustrie\n(z.B. Margarine, Snacks)]
-  R --> T[Biodiesel / Oleochemie]
-  S --> U[LEH/Gastro] --> V[Verbraucher\n(Speiseöle/Produkte)]
-  T --> W[Transport/Energie-Markt]
+  L --> R["Raffination / Abfüllung"]
+  R --> S["Lebensmittelindustrie\n(z.B. Margarine, Snacks)"]
+  R --> T["Biodiesel / Oleochemie"]
+  S --> U["LEH/Gastro"] --> V["Verbraucher\n(Speiseöle/Produkte)"]
+  T --> W["Transport/Energie-Markt"]
 ```
 
 Kompakt
