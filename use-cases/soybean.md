@@ -106,7 +106,7 @@ flowchart LR
 ```
 
 Kompakt
-```
+```mermaid
 flowchart LR
 
   subgraph UP["Upstream (Südamerika)"]
